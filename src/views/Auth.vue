@@ -6,7 +6,7 @@
                 <div class="alert danger" v-if="this.errorRegister">
                     <span>{{ this.errorRegister }}</span>
                 </div>
-                <div class="mb-4 mt-4">
+                <div class="mt-4 mb-4">
                     <label for="first_name" class="form-label">First Name</label>
                     <input type="text" class="form-control" id="first_name" v-model="this.registerForm.first_name">
                 </div>
@@ -79,7 +79,6 @@ export default {
         async register() {
             await axios.post('/auth/register', this.registerForm)
             .then(res => {
-                console.log(res.data);
                 localStorage.setItem('token', res.data.token);
                 this.$router.go('/note')
             })

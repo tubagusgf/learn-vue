@@ -26,6 +26,7 @@
 
 a {
     text-decoration: none;
+    color: rgb(170, 157, 157);
 }
   
 nav {
@@ -56,6 +57,29 @@ main {
     min-height: 50vh;
     padding: 50px;
 }
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 768px) {
+    .container {
+      width: 750px;
+    }
+  }
+  @media (min-width: 992px) {
+    .container {
+      width: 970px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .container {
+      width: 1170px;
+    }
+  }
 
 .auth {
     display: flex;
@@ -113,4 +137,17 @@ main {
 .danger {
     background-color: rgb(199, 91, 91);
     color: #fff;
+}
+
+.success {
+    background-color: rgb(72, 192, 152);
+    color: #fff;
+}
+
+table, th, td {
+    border: solid 1px #2c3e50;
+    border-collapse: collapse;
+    padding: 10px;
+    width: auto;
+    margin-top: 2rem;
 }
