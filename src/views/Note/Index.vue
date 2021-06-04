@@ -17,9 +17,9 @@
                 <td>{{ note.title }}</td>
                 <td>{{ note.content }}</td>
                 <td>
-                    <router-link to="/note/edit" class="btn info">Detail</router-link>
-                    <router-link to="/note/edit" class="btn warning ml-10">Edit</router-link>
-                    <button class="btn danger ml-10">Delete</button>
+                    <router-link :to="{name: 'ShowNote', params: { id: note.id }}" class="btn info">Detail</router-link>
+                    <router-link :to="{name: 'EditNote', params: { id: note.id }}" class="btn warning ml-10">Edit</router-link>
+                    <button class="btn danger ml-10" @click="() => deleteNote(note.id)" :id="note.id">Delete</button>
                 </td>
             </tr>
             </template>
@@ -47,6 +47,16 @@ export default {
             .then(res => {
                 this.notes = res.data.note
             })
+        },
+
+        async deleteNote(id) {
+            const row = document.getElementById(id)
+            const question = confirm(`You want to delete this note?`);
+
+            if (question) {
+                await axios.delete(`/note/${id}`, {params: {token:localStorage.getItem('token')}})
+                row.parentElement.parentElement.remove()   
+            }
         }
     }
 }

@@ -11,6 +11,7 @@ export default {
   },
 
   mounted() {
+      this.$router.push('/login')
       if (!localStorage.getItem('token')) {
           this.$router.push('/login')
       }
